@@ -1,4 +1,4 @@
-package com.example.reactivecrud.product;
+package com.example.reactivecrud.product.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

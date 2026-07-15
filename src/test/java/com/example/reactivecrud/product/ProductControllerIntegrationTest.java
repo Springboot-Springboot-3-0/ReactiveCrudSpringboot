@@ -1,5 +1,7 @@
 package com.example.reactivecrud.product;
 
+import com.example.reactivecrud.product.dto.ProductRequest;
+import com.example.reactivecrud.product.dto.ProductResponse;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;

@@ -1,5 +1,8 @@
-package com.example.reactivecrud.product;
+package com.example.reactivecrud.product.controller;
 
+import com.example.reactivecrud.product.dto.ProductRequest;
+import com.example.reactivecrud.product.dto.ProductResponse;
+import com.example.reactivecrud.product.service.ProductService;
 import jakarta.validation.Valid;
 import java.net.URI;
 import org.springframework.http.ResponseEntity;

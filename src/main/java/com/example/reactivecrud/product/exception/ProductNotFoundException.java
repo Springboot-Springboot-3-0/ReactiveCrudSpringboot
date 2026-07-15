@@ -1,4 +1,4 @@
-package com.example.reactivecrud.product;
+package com.example.reactivecrud.product.exception;
 
 public class ProductNotFoundException extends RuntimeException {
 

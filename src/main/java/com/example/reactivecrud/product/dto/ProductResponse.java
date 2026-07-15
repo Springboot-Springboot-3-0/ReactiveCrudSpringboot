@@ -1,5 +1,6 @@
-package com.example.reactivecrud.product;
+package com.example.reactivecrud.product.dto;
 
+import com.example.reactivecrud.product.model.Product;
 import java.math.BigDecimal;
 
 public record ProductResponse(

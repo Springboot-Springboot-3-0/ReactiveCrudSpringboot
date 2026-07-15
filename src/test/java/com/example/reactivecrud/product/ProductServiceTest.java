@@ -1,5 +1,10 @@
 package com.example.reactivecrud.product;
 
+import com.example.reactivecrud.product.dto.ProductRequest;
+import com.example.reactivecrud.product.exception.ProductNotFoundException;
+import com.example.reactivecrud.product.model.Product;
+import com.example.reactivecrud.product.repository.ProductRepository;
+import com.example.reactivecrud.product.service.ProductService;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

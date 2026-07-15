@@ -1,6 +1,6 @@
 package com.example.reactivecrud.error;
 
-import com.example.reactivecrud.product.ProductNotFoundException;
+import com.example.reactivecrud.product.exception.ProductNotFoundException;
 import java.net.URI;
 import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;

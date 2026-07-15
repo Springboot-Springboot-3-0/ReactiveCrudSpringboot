@@ -1,5 +1,10 @@
-package com.example.reactivecrud.product;
+package com.example.reactivecrud.product.service;
 
+import com.example.reactivecrud.product.dto.ProductRequest;
+import com.example.reactivecrud.product.dto.ProductResponse;
+import com.example.reactivecrud.product.exception.ProductNotFoundException;
+import com.example.reactivecrud.product.model.Product;
+import com.example.reactivecrud.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
