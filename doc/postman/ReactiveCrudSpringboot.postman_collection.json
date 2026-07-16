@@ -13,6 +13,10 @@
     {
       "key": "productId",
       "value": "1"
+    },
+    {
+      "key": "payloadSize",
+      "value": "2048"
     }
   ],
   "item": [
@@ -224,6 +228,66 @@
           ]
         },
         "description": "Trigger the not-found response."
+      },
+      "response": []
+    },
+    {
+      "name": "Performance Ping (Gzip)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/performance/ping?size={{payloadSize}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "performance",
+            "ping"
+          ],
+          "query": [
+            {
+              "key": "size",
+              "value": "{{payloadSize}}"
+            }
+          ]
+        },
+        "description": "Large response to validate gzip compression behavior."
+      },
+      "response": []
+    },
+    {
+      "name": "Performance Products (Pooled WebClient)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/performance/products",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "performance",
+            "products"
+          ]
+        },
+        "description": "Fetch products via internal pooled WebClient call."
       },
       "response": []
     }
