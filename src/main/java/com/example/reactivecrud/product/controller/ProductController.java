@@ -4,6 +4,7 @@ import com.example.reactivecrud.product.dto.ProductRequest;
 import com.example.reactivecrud.product.dto.ProductResponse;
 import com.example.reactivecrud.product.service.ProductService;
 import jakarta.validation.Valid;
+import java.math.BigDecimal;
 import java.net.URI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -30,6 +32,19 @@ public class ProductController {
     @GetMapping
     public Flux<ProductResponse> findAll() {
         return productService.findAll();
+    }
+
+    @GetMapping("/search")
+    public Flux<ProductResponse> searchByName(@RequestParam String name) {
+        return productService.searchByName(name);
+    }
+
+    @GetMapping("/filter")
+    public Flux<ProductResponse> findByPriceRange(
+            @RequestParam BigDecimal minPrice,
+            @RequestParam BigDecimal maxPrice
+    ) {
+        return productService.findByPriceRange(minPrice, maxPrice);
     }
 
     @GetMapping("/{id}")

@@ -13,6 +13,18 @@
     {
       "key": "productId",
       "value": "1"
+    },
+    {
+      "key": "searchTerm",
+      "value": "laptop"
+    },
+    {
+      "key": "minPrice",
+      "value": "100"
+    },
+    {
+      "key": "maxPrice",
+      "value": "1000"
     }
   ],
   "item": [
@@ -224,6 +236,72 @@
           ]
         },
         "description": "Trigger the not-found response."
+      },
+      "response": []
+    },
+    {
+      "name": "Search Products By Name",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/search?name={{searchTerm}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "{{searchTerm}}"
+            }
+          ]
+        },
+        "description": "Search products by name using reactive R2DBC query."
+      },
+      "response": []
+    },
+    {
+      "name": "Filter Products By Price Range",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/filter?minPrice={{minPrice}}&maxPrice={{maxPrice}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "filter"
+          ],
+          "query": [
+            {
+              "key": "minPrice",
+              "value": "{{minPrice}}"
+            },
+            {
+              "key": "maxPrice",
+              "value": "{{maxPrice}}"
+            }
+          ]
+        },
+        "description": "Filter products by price range using reactive R2DBC query."
       },
       "response": []
     }

@@ -1,0 +1,15 @@
+meta {
+  name: Filter Products By Price Range
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api/products/filter?minPrice={{minPrice}}&maxPrice={{maxPrice}}
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}

@@ -9,6 +9,9 @@ Import [postman/ReactiveCrudSpringboot.postman_collection.json](postman/Reactive
 Default variables:
 - `baseUrl`: `http://localhost:8080`
 - `productId`: `1`
+- `searchTerm`: `laptop`
+- `minPrice`: `100`
+- `maxPrice`: `1000`
 
 ## Bruno
 
@@ -17,6 +20,9 @@ Open the [bruno](bruno) folder as a Bruno collection.
 Default local environment:
 - `baseUrl`: `http://localhost:8080`
 - `productId`: `1`
+- `searchTerm`: `laptop`
+- `minPrice`: `100`
+- `maxPrice`: `1000`
 
 Requests included:
 - List products
@@ -26,3 +32,5 @@ Requests included:
 - Delete product
 - Validation error example
 - Not found example
+- Search products by name
+- Filter products by price range

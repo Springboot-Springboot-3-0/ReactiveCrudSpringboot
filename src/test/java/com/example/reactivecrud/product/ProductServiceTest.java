@@ -91,4 +91,28 @@ class ProductServiceTest {
 
         verify(productRepository).delete(existing);
     }
+
+    @Test
+    void searchByNameShouldReturnMatchingProducts() {
+    when(productRepository.findByNameContainingIgnoreCase("lap"))
+        .thenReturn(reactor.core.publisher.Flux.just(
+            new Product(1L, "Laptop", "Lightweight", new BigDecimal("999.99"))
+        ));
+
+    StepVerifier.create(productService.searchByName("lap"))
+        .assertNext(response -> Assertions.assertEquals("Laptop", response.name()))
+        .verifyComplete();
+    }
+
+    @Test
+    void findByPriceRangeShouldReturnProductsInRange() {
+    when(productRepository.findByPriceBetween(new BigDecimal("100.00"), new BigDecimal("300.00")))
+        .thenReturn(reactor.core.publisher.Flux.just(
+            new Product(2L, "Headphones", "Noise cancelling", new BigDecimal("199.99"))
+        ));
+
+    StepVerifier.create(productService.findByPriceRange(new BigDecimal("100.00"), new BigDecimal("300.00")))
+        .assertNext(response -> Assertions.assertEquals("Headphones", response.name()))
+        .verifyComplete();
+    }
 }

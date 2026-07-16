@@ -5,6 +5,7 @@ import com.example.reactivecrud.product.dto.ProductResponse;
 import com.example.reactivecrud.product.exception.ProductNotFoundException;
 import com.example.reactivecrud.product.model.Product;
 import com.example.reactivecrud.product.repository.ProductRepository;
+import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -20,6 +21,14 @@ public class ProductService {
 
     public Flux<ProductResponse> findAll() {
         return productRepository.findAll().map(ProductResponse::from);
+    }
+
+    public Flux<ProductResponse> searchByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name).map(ProductResponse::from);
+    }
+
+    public Flux<ProductResponse> findByPriceRange(BigDecimal minPrice, BigDecimal maxPrice) {
+        return productRepository.findByPriceBetween(minPrice, maxPrice).map(ProductResponse::from);
     }
 
     public Mono<ProductResponse> findById(Long id) {
