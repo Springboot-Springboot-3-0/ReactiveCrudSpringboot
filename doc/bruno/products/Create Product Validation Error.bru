@@ -1,0 +1,24 @@
+meta {
+  name: Create Product Validation Error
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/products
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": " ",
+    "description": "This description intentionally exceeds the 255 character validation limit by repeating content multiple times. This description intentionally exceeds the 255 character validation limit by repeating content multiple times. This description intentionally exceeds the limit.",
+    "price": 0
+  }
+}
