@@ -13,6 +13,10 @@
     {
       "key": "productId",
       "value": "1"
+    },
+    {
+      "key": "intervalSeconds",
+      "value": "1"
     }
   ],
   "item": [
@@ -224,6 +228,37 @@
           ]
         },
         "description": "Trigger the not-found response."
+      },
+      "response": []
+    },
+    {
+      "name": "Stream Products (SSE)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/stream?intervalSeconds={{intervalSeconds}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "stream"
+          ],
+          "query": [
+            {
+              "key": "intervalSeconds",
+              "value": "{{intervalSeconds}}"
+            }
+          ]
+        },
+        "description": "Stream products as server-sent events."
       },
       "response": []
     }
