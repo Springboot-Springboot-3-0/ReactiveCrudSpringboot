@@ -9,6 +9,7 @@ Import [postman/ReactiveCrudSpringboot.postman_collection.json](postman/Reactive
 Default variables:
 - `baseUrl`: `http://localhost:8080`
 - `productId`: `1`
+- `orderId`: `1`
 
 ## Bruno
 
@@ -17,6 +18,7 @@ Open the [bruno](bruno) folder as a Bruno collection.
 Default local environment:
 - `baseUrl`: `http://localhost:8080`
 - `productId`: `1`
+- `orderId`: `1`
 
 Requests included:
 - List products
@@ -26,3 +28,7 @@ Requests included:
 - Delete product
 - Validation error example
 - Not found example
+- Create order
+- Get order by id
+- Get order details (end-to-end)
+- Get missing order

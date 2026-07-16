@@ -13,6 +13,10 @@
     {
       "key": "productId",
       "value": "1"
+    },
+    {
+      "key": "orderId",
+      "value": "1"
     }
   ],
   "item": [
@@ -224,6 +228,119 @@
           ]
         },
         "description": "Trigger the not-found response."
+      },
+      "response": []
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": 1,\n  \"quantity\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        },
+        "description": "Create an order for a product."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Order By Id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/{{orderId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}"
+          ]
+        },
+        "description": "Fetch an order by id."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Order Details (End-to-End)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/{{orderId}}/details",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}",
+            "details"
+          ]
+        },
+        "description": "Fetch order + product details via reactive internal service call."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Missing Order",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "999"
+          ]
+        },
+        "description": "Trigger order not-found response."
       },
       "response": []
     }

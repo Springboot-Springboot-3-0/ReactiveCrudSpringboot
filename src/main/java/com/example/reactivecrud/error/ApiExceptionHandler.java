@@ -1,5 +1,6 @@
 package com.example.reactivecrud.error;
 
+import com.example.reactivecrud.order.exception.OrderNotFoundException;
 import com.example.reactivecrud.product.exception.ProductNotFoundException;
 import java.net.URI;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.server.ServerWebInputException;
 
 @RestControllerAdvice
@@ -17,6 +19,22 @@ public class ApiExceptionHandler {
     @ExceptionHandler(ProductNotFoundException.class)
     ProblemDetail handleNotFound(ProductNotFoundException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+        problemDetail.setTitle("Resource not found");
+        problemDetail.setType(URI.create("https://example.com/problems/not-found"));
+        return problemDetail;
+    }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    ProblemDetail handleOrderNotFound(OrderNotFoundException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+        problemDetail.setTitle("Resource not found");
+        problemDetail.setType(URI.create("https://example.com/problems/not-found"));
+        return problemDetail;
+    }
+
+    @ExceptionHandler(WebClientResponseException.NotFound.class)
+    ProblemDetail handleDownstreamNotFound(WebClientResponseException.NotFound ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, "Downstream resource was not found");
         problemDetail.setTitle("Resource not found");
         problemDetail.setType(URI.create("https://example.com/problems/not-found"));
         return problemDetail;

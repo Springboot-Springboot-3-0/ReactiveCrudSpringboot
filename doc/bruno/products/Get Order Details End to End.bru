@@ -1,0 +1,15 @@
+meta {
+  name: Get Order Details End to End
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/api/orders/{{orderId}}/details
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
