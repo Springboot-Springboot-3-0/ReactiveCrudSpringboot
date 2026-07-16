@@ -226,6 +226,35 @@
         "description": "Trigger the not-found response."
       },
       "response": []
+    },
+    {
+      "name": "Filter Ping (WebFilter Headers)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Request-Id",
+            "value": "manual-trace-id"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/filter/ping",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "filter",
+            "ping"
+          ]
+        },
+        "description": "Validate WebFilter interception headers."
+      },
+      "response": []
     }
   ]
 }

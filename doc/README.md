@@ -26,3 +26,4 @@ Requests included:
 - Delete product
 - Validation error example
 - Not found example
+- Filter ping (WebFilter headers)
