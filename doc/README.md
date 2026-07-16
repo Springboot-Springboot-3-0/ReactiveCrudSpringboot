@@ -26,3 +26,5 @@ Requests included:
 - Delete product
 - Validation error example
 - Not found example
+- Create product missing price
+- Get product with invalid id

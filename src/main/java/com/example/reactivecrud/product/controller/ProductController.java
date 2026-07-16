@@ -4,8 +4,10 @@ import com.example.reactivecrud.product.dto.ProductRequest;
 import com.example.reactivecrud.product.dto.ProductResponse;
 import com.example.reactivecrud.product.service.ProductService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import java.net.URI;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/products")
+@Validated
 public class ProductController {
 
     private final ProductService productService;
@@ -33,7 +36,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ProductResponse> findById(@PathVariable Long id) {
+    public Mono<ProductResponse> findById(@PathVariable @Positive(message = "id must be greater than zero") Long id) {
         return productService.findById(id);
     }
 
@@ -46,12 +49,15 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public Mono<ProductResponse> update(@PathVariable Long id, @Valid @RequestBody ProductRequest request) {
+    public Mono<ProductResponse> update(
+            @PathVariable @Positive(message = "id must be greater than zero") Long id,
+            @Valid @RequestBody ProductRequest request
+    ) {
         return productService.update(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public Mono<ResponseEntity<Void>> delete(@PathVariable Long id) {
+    public Mono<ResponseEntity<Void>> delete(@PathVariable @Positive(message = "id must be greater than zero") Long id) {
         return productService.delete(id)
                 .thenReturn(ResponseEntity.noContent().build());
     }

@@ -3,6 +3,7 @@ package com.example.reactivecrud.error;
 import com.example.reactivecrud.product.exception.ProductNotFoundException;
 import java.net.URI;
 import java.util.List;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -29,6 +30,18 @@ public class ApiExceptionHandler {
         problemDetail.setType(URI.create("https://example.com/problems/validation"));
         List<String> errors = ex.getFieldErrors().stream()
                 .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .toList();
+        problemDetail.setProperty("errors", errors);
+        return problemDetail;
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    ProblemDetail handleConstraintViolation(ConstraintViolationException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Request validation failed");
+        problemDetail.setTitle("Validation failed");
+        problemDetail.setType(URI.create("https://example.com/problems/validation"));
+        List<String> errors = ex.getConstraintViolations().stream()
+                .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
                 .toList();
         problemDetail.setProperty("errors", errors);
         return problemDetail;

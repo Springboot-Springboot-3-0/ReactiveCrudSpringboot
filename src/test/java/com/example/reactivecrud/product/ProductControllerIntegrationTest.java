@@ -134,4 +134,41 @@ class ProductControllerIntegrationTest {
                 .jsonPath("$.title").isEqualTo("Resource not found")
                 .jsonPath("$.detail").isEqualTo("Product 99 was not found");
     }
+
+    @Test
+    void shouldReturnValidationErrorWhenPriceMissing() {
+        String payload = """
+                {
+                  "name": "Phone",
+                  "description": "Missing price"
+                }
+                """;
+
+        webTestClient.post()
+                .uri("/api/products")
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(payload)
+                .exchange()
+                .expectStatus().isBadRequest()
+                .expectBody()
+                .jsonPath("$.title").isEqualTo("Validation failed")
+                .jsonPath("$.detail").isEqualTo("Request validation failed")
+                .jsonPath("$.errors.length()").isEqualTo(1)
+                .jsonPath("$.errors[0]").value(message ->
+                        Assertions.assertTrue(message.toString().contains("price")));
+    }
+
+    @Test
+    void shouldReturnValidationErrorWhenIdIsNotPositive() {
+        webTestClient.get()
+                .uri("/api/products/0")
+                .exchange()
+                .expectStatus().isBadRequest()
+                .expectBody()
+                .jsonPath("$.title").isEqualTo("Validation failed")
+                .jsonPath("$.detail").isEqualTo("Request validation failed")
+                .jsonPath("$.errors.length()").isEqualTo(1)
+                .jsonPath("$.errors[0]").value(message ->
+                        Assertions.assertTrue(message.toString().contains("id must be greater than zero")));
+    }
 }

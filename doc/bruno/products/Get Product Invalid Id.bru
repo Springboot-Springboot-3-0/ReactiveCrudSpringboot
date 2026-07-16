@@ -1,0 +1,15 @@
+meta {
+  name: Get Product Invalid Id
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api/products/0
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}

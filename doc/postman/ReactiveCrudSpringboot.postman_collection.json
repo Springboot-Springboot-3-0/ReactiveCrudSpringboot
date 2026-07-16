@@ -226,6 +226,68 @@
         "description": "Trigger the not-found response."
       },
       "response": []
+    },
+    {
+      "name": "Create Product Missing Price",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Phone\",\n  \"description\": \"Missing price\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ]
+        },
+        "description": "Trigger validation error when price is missing."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Product Invalid Id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/0",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "0"
+          ]
+        },
+        "description": "Trigger method parameter validation on path variable."
+      },
+      "response": []
     }
   ]
 }
