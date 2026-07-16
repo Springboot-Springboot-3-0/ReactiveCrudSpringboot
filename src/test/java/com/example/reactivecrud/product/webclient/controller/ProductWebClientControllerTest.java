@@ -1,7 +1,8 @@
-package com.example.reactivecrud.product.webclient;
+package com.example.reactivecrud.product.webclient.controller;
 
 import com.example.reactivecrud.product.dto.ProductRequest;
 import com.example.reactivecrud.product.dto.ProductResponse;
+import com.example.reactivecrud.product.webclient.service.ProductWebClientService;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

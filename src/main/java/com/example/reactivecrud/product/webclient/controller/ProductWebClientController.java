@@ -1,7 +1,8 @@
-package com.example.reactivecrud.product.webclient;
+package com.example.reactivecrud.product.webclient.controller;
 
 import com.example.reactivecrud.product.dto.ProductRequest;
 import com.example.reactivecrud.product.dto.ProductResponse;
+import com.example.reactivecrud.product.webclient.service.ProductWebClientService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

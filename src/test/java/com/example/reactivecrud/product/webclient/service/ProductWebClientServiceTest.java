@@ -1,4 +1,4 @@
-package com.example.reactivecrud.product.webclient;
+package com.example.reactivecrud.product.webclient.service;
 
 import com.example.reactivecrud.product.dto.ProductRequest;
 import com.example.reactivecrud.product.dto.ProductResponse;
