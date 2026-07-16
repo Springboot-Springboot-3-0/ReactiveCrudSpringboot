@@ -1,6 +1,7 @@
-package com.example.reactivecrud.product.streaming;
+package com.example.reactivecrud.product.streaming.controller;
 
 import com.example.reactivecrud.product.dto.ProductResponse;
+import com.example.reactivecrud.product.streaming.service.ProductStreamingService;
 import java.time.Duration;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

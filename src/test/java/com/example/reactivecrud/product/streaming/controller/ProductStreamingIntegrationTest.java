@@ -1,4 +1,4 @@
-package com.example.reactivecrud.product.streaming;
+package com.example.reactivecrud.product.streaming.controller;
 
 import com.example.reactivecrud.product.dto.ProductResponse;
 import java.time.Duration;

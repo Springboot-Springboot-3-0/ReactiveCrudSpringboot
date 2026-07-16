@@ -1,6 +1,7 @@
-package com.example.reactivecrud.product.streaming;
+package com.example.reactivecrud.product.streaming.controller;
 
 import com.example.reactivecrud.product.dto.ProductResponse;
+import com.example.reactivecrud.product.streaming.service.ProductStreamingService;
 import java.math.BigDecimal;
 import java.time.Duration;
 import org.junit.jupiter.api.Assertions;

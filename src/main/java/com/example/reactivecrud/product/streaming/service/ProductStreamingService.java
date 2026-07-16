@@ -1,4 +1,4 @@
-package com.example.reactivecrud.product.streaming;
+package com.example.reactivecrud.product.streaming.service;
 
 import com.example.reactivecrud.product.dto.ProductResponse;
 import com.example.reactivecrud.product.repository.ProductRepository;
