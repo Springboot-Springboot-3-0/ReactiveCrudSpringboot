@@ -47,8 +47,8 @@ class ProductControllerIntegrationTest {
                 .getResponseBody();
 
         Assertions.assertNotNull(created);
-        Assertions.assertEquals(1L, created.id());
-        Assertions.assertEquals("Laptop", created.name());
+        Assertions.assertEquals(1L, created.getId());
+        Assertions.assertEquals("Laptop", created.getName());
 
         webTestClient.get()
                 .uri("/api/products/1")

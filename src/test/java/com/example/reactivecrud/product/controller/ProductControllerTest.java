@@ -30,7 +30,7 @@ class ProductControllerTest {
                 .thenReturn(Flux.just(new ProductResponse(1L, "Laptop", "Lightweight", new BigDecimal("999.99"))));
 
         StepVerifier.create(controller.findAll())
-                .assertNext(response -> Assertions.assertEquals("Laptop", response.name()))
+                .assertNext(response -> Assertions.assertEquals("Laptop", response.getName()))
                 .verifyComplete();
 
         verify(productService).findAll();
@@ -43,7 +43,7 @@ class ProductControllerTest {
                 .thenReturn(Mono.just(new ProductResponse(4L, "Phone", "Flagship", new BigDecimal("599.99"))));
 
         StepVerifier.create(controller.findById(4L))
-                .assertNext(response -> Assertions.assertEquals(4L, response.id()))
+                .assertNext(response -> Assertions.assertEquals(4L, response.getId()))
                 .verifyComplete();
 
         verify(productService).findById(4L);
@@ -60,7 +60,7 @@ class ProductControllerTest {
                 .assertNext(entity -> {
                     Assertions.assertEquals(HttpStatus.CREATED, entity.getStatusCode());
                     Assertions.assertEquals("/api/products/8", entity.getHeaders().getLocation().toString());
-                    Assertions.assertEquals(8L, entity.getBody().id());
+                    Assertions.assertEquals(8L, entity.getBody().getId());
                 })
                 .verifyComplete();
     }
