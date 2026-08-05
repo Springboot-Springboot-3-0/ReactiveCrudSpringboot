@@ -43,8 +43,10 @@ public class ProductController {
     @PostMapping
     public Mono<ResponseEntity<ProductResponse>> create(@Valid @RequestBody ProductRequest request) {
         return productService.create(request)
+                // 201 Created + a Location header pointing at the new product (/api/products/{id}),
+                // with the saved product as the response body.
                 .map(response -> ResponseEntity
-                        .created(URI.create("/api/products/" + response.id()))
+                        .created(URI.create("/api/products/" + response.getId()))
                         .body(response));
     }
 

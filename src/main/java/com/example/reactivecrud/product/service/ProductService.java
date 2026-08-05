@@ -48,6 +48,6 @@ public class ProductService {
     }
 
     private Product toProduct(Long id, ProductRequest request) {
-        return new Product(id, request.name().trim(), request.description(), request.price());
+        return new Product(id, request.getName().trim(), request.getDescription(), request.getPrice());
     }
 }

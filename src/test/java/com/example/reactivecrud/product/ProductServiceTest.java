@@ -36,12 +36,12 @@ class ProductServiceTest {
     void createShouldSaveAndReturnProduct() {
         ProductRequest request = new ProductRequest("Keyboard", "Mechanical keyboard", new BigDecimal("99.99"));
         when(productRepository.save(any(Product.class)))
-                .thenReturn(Mono.just(new Product(1L, request.name(), request.description(), request.price())));
+                .thenReturn(Mono.just(new Product(1L, request.getName(), request.getDescription(), request.getPrice())));
 
         StepVerifier.create(productService.create(request))
                 .assertNext(response -> {
-                    Assertions.assertEquals(1L, response.id());
-                    Assertions.assertEquals("Keyboard", response.name());
+                    Assertions.assertEquals(1L, response.getId());
+                    Assertions.assertEquals("Keyboard", response.getName());
                 })
                 .verifyComplete();
     }
@@ -62,12 +62,12 @@ class ProductServiceTest {
 
         when(productRepository.findById(5L)).thenReturn(Mono.just(existing));
         when(productRepository.save(any(Product.class)))
-                .thenReturn(Mono.just(new Product(5L, request.name(), request.description(), request.price())));
+                .thenReturn(Mono.just(new Product(5L, request.getName(), request.getDescription(), request.getPrice())));
 
         StepVerifier.create(productService.update(5L, request))
                 .assertNext(response -> {
-                    Assertions.assertEquals(5L, response.id());
-                    Assertions.assertEquals("New", response.name());
+                    Assertions.assertEquals(5L, response.getId());
+                    Assertions.assertEquals("New", response.getName());
                 })
                 .verifyComplete();
     }
